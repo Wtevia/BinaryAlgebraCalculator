@@ -56,7 +56,7 @@ namespace lab2Console
         {
             
             //+ is conjunction, * is disjunction, ^ is negation
-            string OPERATORS = "+*^";
+            string OPERATORS = "^*+>~";
             List<char> stack = expr.ToCharArray().ToList();
             List<string> stackOperations = new List<string>();
             expr.Substring(1, expr.Length - 2);
@@ -91,7 +91,8 @@ namespace lab2Console
                     stackRPN.Add(stack[i].ToString());
                     //Console.WriteLine("Enter value for the variable: "+stack[i]);
                     //val = Int32.Parse(Console.ReadLine());
-                    binDict.Add(stack[i].ToString(), -1);
+                    if(!binDict.ContainsKey(stack[i].ToString()))
+                        binDict.Add(stack[i].ToString(), -1);
                 }
             }
             stackOperations.Reverse();
@@ -103,25 +104,20 @@ namespace lab2Console
         public string getResultFromRPN()
         {
             List<string> resultStack = new List<string>();
-                for (int i = 0; i < stackRPN.Count; i++)
-                {
+            for (int i = 0; i < stackRPN.Count; i++)
+            {
                     int v1 = -1;
                     int v2 = -1;
                     switch (stackRPN[i])
                     {
-                        case "+":
-                            v1= Int32.Parse(resultStack[resultStack.Count-1]);
+                        case "^":
+                            //binDict.TryGetValue(resultStack[resultStack.Count - 1], out v1);
+                            v1 = Int32.Parse(resultStack[resultStack.Count - 1]);
                             resultStack.RemoveAt(resultStack.Count - 1);
-                            v2 = Int32.Parse(resultStack[resultStack.Count - 1]);
-                            resultStack.RemoveAt(resultStack.Count - 1);
-                            if (v1==v2)
-                                if (v1==0)
-                                    resultStack.Add("0");
-                                else
-                                    resultStack.Add("1");
+                            if (v1 == 0)
+                                resultStack.Add("1");
                             else
-                                resultStack.Add("1"); 
-
+                                resultStack.Add("0");
                             break;
                         case "*":
                             v1 = Int32.Parse(resultStack[resultStack.Count - 1]);
@@ -136,11 +132,35 @@ namespace lab2Console
                             else
                                 resultStack.Add("0");
                             break;
-                        case "^":
-                            //binDict.TryGetValue(resultStack[resultStack.Count - 1], out v1);
+                        case "+":
                             v1 = Int32.Parse(resultStack[resultStack.Count - 1]);
                             resultStack.RemoveAt(resultStack.Count - 1);
-                            if (v1 == 0)
+                            v2 = Int32.Parse(resultStack[resultStack.Count - 1]);
+                            resultStack.RemoveAt(resultStack.Count - 1);
+                            if (v1 == v2)
+                                if (v1 == 0)
+                                    resultStack.Add("0");
+                                else
+                                    resultStack.Add("1");
+                            else
+                                resultStack.Add("1");
+                            break;
+                        case ">":
+                            v1 = Int32.Parse(resultStack[resultStack.Count - 1]);
+                            resultStack.RemoveAt(resultStack.Count - 1);
+                            v2 = Int32.Parse(resultStack[resultStack.Count - 1]);
+                            resultStack.RemoveAt(resultStack.Count - 1);
+                            if (v2 == 1 && v1 == 0)
+                                resultStack.Add("0");
+                            else
+                                resultStack.Add("1");
+                            break;
+                        case "~":
+                            v1 = Int32.Parse(resultStack[resultStack.Count - 1]);
+                            resultStack.RemoveAt(resultStack.Count - 1);
+                            v2 = Int32.Parse(resultStack[resultStack.Count - 1]);
+                            resultStack.RemoveAt(resultStack.Count - 1);
+                            if (v1 == v2)
                                 resultStack.Add("1");
                             else
                                 resultStack.Add("0");
@@ -149,17 +169,21 @@ namespace lab2Console
                             resultStack.Add(stackRPN[i]);
                             break;
                     }
-                 }
+            }
             return resultStack[0];
         }
 
         private int getPriority(string s)
         {
-            if (s.Equals("^"))
+            if (s.Equals("^"))// !
+                return 5;
+            if (s.Equals("*"))// &
+                return 4;
+            if (s.Equals("+"))// |
                 return 3;
-            if (s.Equals("*"))
+            if (s.Equals(">"))
                 return 2;
-            if (s.Equals("+"))
+            if (s.Equals("~"))
                 return 1;
             if (s.Equals("(") || s.Equals(")"))
                 return 0;

@@ -16,20 +16,21 @@ namespace lab2Console
             try
             {
                 //^((^x+^y)*^(t+^z))
+                Console.WriteLine("Denotations:^ is negation, * is disjuction, + is conjunction, > is implication, ~ is equivalence");
                 Console.WriteLine("Enter formula:");
                 String formula = Console.ReadLine();
                 calc.setDictionaryAndRPNByFormula(formula);
                 Console.WriteLine("Enter values of variables separated by the space in the next order: \n" + string.Join(" ", calc.binDict.Keys));
                 String values = Console.ReadLine();
                 calc.setElementsInDictionary(values);
-                Console.WriteLine("\nDo you want to change value of any variable? (Enter: yes/no)");
+                Console.WriteLine("\nDo you want to change value of any variable? (Enter: y/n)");
                 string shouldChangeSmth = Console.ReadLine();
-                while (!shouldChangeSmth.Contains("no"))
+                while (!shouldChangeSmth.Contains("n"))
                 {
                     Console.WriteLine("Enter name of variable and its new value separated by space: ");
                     string[] keyAndValue = Console.ReadLine().Split(' ');
                     calc.setValueByKey(keyAndValue[0], Int32.Parse(keyAndValue[1]));
-                    Console.WriteLine("Do you want to change value of any variable? (Enter \"no\" to quit)");
+                    Console.WriteLine("Do you want to change value of any variable? (Enter \'n\' to quit)");
                     shouldChangeSmth = Console.ReadLine();
                 }
                 calc.setValuesOfElementsInRPN();
