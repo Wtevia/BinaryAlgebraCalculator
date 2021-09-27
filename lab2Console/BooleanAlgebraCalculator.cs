@@ -86,12 +86,16 @@ namespace lab2Console
                     }
                     stackOperations.Add(stack[i].ToString());
                 }
-                else 
+                else if(stack[i].Equals('1')|| stack[i].Equals('0'))
+                {
+                    stackRPN.Add(stack[i].ToString());
+                }
+                else
                 {
                     stackRPN.Add(stack[i].ToString());
                     //Console.WriteLine("Enter value for the variable: "+stack[i]);
                     //val = Int32.Parse(Console.ReadLine());
-                    if(!binDict.ContainsKey(stack[i].ToString()))
+                    if (!binDict.ContainsKey(stack[i].ToString()))
                         binDict.Add(stack[i].ToString(), -1);
                 }
             }
