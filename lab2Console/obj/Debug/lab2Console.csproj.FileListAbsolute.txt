@@ -10,3 +10,10 @@ C:\Users\Sony\Desktop\c#\KDM_lab2\BinaryAlgebraConsoleCalculator\lab2Console\obj
 C:\Users\Sony\Desktop\c#\KDM_lab2\BinaryAlgebraConsoleCalculator\lab2Console\bin\Debug\lab2Console.exe
 C:\Users\Sony\Desktop\c#\KDM_lab2\BinaryAlgebraConsoleCalculator\lab2Console\bin\Debug\lab2Console.pdb
 C:\Users\Sony\Desktop\c#\KDM_lab2\BinaryAlgebraConsoleCalculator\lab2Console\obj\Debug\lab2Console.csprojResolveAssemblyReference.cache
+B:\Nure_programs\CDM\BinaryAlgebraConsoleCalculator\lab2Console\bin\Debug\lab2Console.exe.config
+B:\Nure_programs\CDM\BinaryAlgebraConsoleCalculator\lab2Console\bin\Debug\lab2Console.exe
+B:\Nure_programs\CDM\BinaryAlgebraConsoleCalculator\lab2Console\bin\Debug\lab2Console.pdb
+B:\Nure_programs\CDM\BinaryAlgebraConsoleCalculator\lab2Console\obj\Debug\lab2Console.csproj.AssemblyReference.cache
+B:\Nure_programs\CDM\BinaryAlgebraConsoleCalculator\lab2Console\obj\Debug\lab2Console.csproj.CoreCompileInputs.cache
+B:\Nure_programs\CDM\BinaryAlgebraConsoleCalculator\lab2Console\obj\Debug\lab2Console.exe
+B:\Nure_programs\CDM\BinaryAlgebraConsoleCalculator\lab2Console\obj\Debug\lab2Console.pdb

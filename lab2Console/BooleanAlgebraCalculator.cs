@@ -20,7 +20,7 @@ namespace lab2Console
             {
                 binDict.Remove(key);
                 binDict.Add(key, newValue);
-                Console.WriteLine("New values are:\n"+string.Join(" ", binDict.Keys)
+                Console.WriteLine("New pair:\n"+string.Join(" ", binDict.Keys)
                     +"\n" + string.Join(" ", binDict.Values)+"\n");
             }
         } 
@@ -223,7 +223,6 @@ namespace lab2Console
                 for (int j = 0; j < vars.Length; j++)
                 {
                     formula = formula.Replace(vars[j], values[j]);
-                    
                 }
                 stackRPN = formula.Split(' ').ToList();
                 if (!results.ContainsKey(binstring))
