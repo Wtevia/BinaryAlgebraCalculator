@@ -16,6 +16,7 @@ namespace lab2Console
             try
             {
                 //^((^x+^y)*^(t+^z))
+                //(x+^y)*z>t~x+1
                 Console.WriteLine("Denotations:^ is negation, * is disjuction, + is conjunction, > is implication, ~ is equivalence");
                 Console.WriteLine("Enter formula:");
                 String formula = Console.ReadLine();
